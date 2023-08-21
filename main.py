@@ -111,7 +111,7 @@ def get_receipt(message):
             try:
                 # cursor.execute("SELECT * FROM offers")
                 # data = cursor.fetchall()
-                textToTelegram = f'{get_date()} <b>Нова заявка!</b>\n@{user_name}\n{item}\n{address}'
+                textToTelegram = f'{get_date()} <b>Нова заявка!</b>\n{name}\n@{user_name}\n{item}\n{address}'
                     
                 with open('receipts/offer.jpg', 'rb') as photo:
                     bot.send_photo(1001173176, photo, textToTelegram, parse_mode='HTML')
