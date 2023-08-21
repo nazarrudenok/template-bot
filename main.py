@@ -49,6 +49,13 @@ def get_item(message):
 def post_offer(message):
     cht = message.chat.id
     user_data[cht] = {'item': message.text}
+
+    for i in range(len(get_data())):
+        if message.text == str(get_data()[i][0]):
+            with open(f'from-db-images/{message.text}.jpg', 'rb') as photo:
+                caption = f'Ви обрали <b>{get_data()[i][1]}</b>\nЦіна: <b>₴{get_data()[i][2]}</b>'
+                bot.send_photo(cht, photo, caption, parse_mode='HTML')
+
     msg = bot.send_message(cht, "Будь ласка, введіть ПІБ:")
     bot.register_next_step_handler(msg, get_name)
 
@@ -110,7 +117,7 @@ def get_receipt(message):
                     bot.send_photo(1001173176, photo, textToTelegram, parse_mode='HTML')
 
 
-                bot.send_message(chat_id, "Дякую, заявку було надіслано! Незабаром з вами зв'яжеться продавець")
+                bot.send_message(chat_id, "Дякуємо, заявку було надіслано! Незабаром з вами зв'яжеться продавець")
             except Exception as ex:
                 bot.send_message(cht, ex)
         except Exception as ex:
