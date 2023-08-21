@@ -27,8 +27,8 @@ def get_list(message):
                 data_text += f"{data[0]}. {data[1]}\n"
 
             initial_message = bot.send_message(cht, 'Для того щоб переглянути товар детальніше, надішліть номер товару\n<b><i>Список надішлеться через: </i></b>', parse_mode='HTML')
-            k = 8
-            for i in range(7):
+            k = 6
+            for i in range(5):
                 k -= 1
                 bot.edit_message_text(chat_id=cht, message_id=initial_message.message_id, text=f'Для того щоб переглянути товар детальніше, надішліть номер товару\n<b><i>Список надішлеться через: {k}</i></b>', parse_mode='HTML')
                 time.sleep(1)
